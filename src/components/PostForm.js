@@ -12,9 +12,9 @@ export default class PostForm extends Component {
     body: this.props.post.body || ""
   };
 
-  handleInput = e => {
+  handleInput = ({target}) => {
     const formData = {};
-    formData[e.target.name] = e.target.value;
+    formData[target.name] = target.value;
     this.setState({ ...formData });
   };
 
@@ -28,6 +28,7 @@ export default class PostForm extends Component {
       }
     });
     try {
+      this.props.onSuccess()
       this.setState({
         title: "",
         body: ""

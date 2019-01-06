@@ -20,7 +20,11 @@ export default class UpdatePost extends Component {
   render() {
     return (
       <Mutation mutation={UPDATE_POST}>
-        {updatePost => <PostForm onSubmit={updatePost} post={this.props.post}/>}
+        {(updatePost, result) => {
+          const onSuccess = () =>
+            result.client.writeData({ data: { isEditMode: false } });
+          return <PostForm onSubmit={updatePost} onSuccess={onSuccess} post={this.props.post} />
+        }}
       </Mutation>
     );
   }

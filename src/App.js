@@ -8,8 +8,16 @@ import Post from "./components/Post";
 import Posts from "./components/Posts";
 import NewPost from "./components/NewPost";
 
+const defaultState = {
+  isEditMode: false,
+}
+
 const client = new ApolloClient({
-  uri: "https://api-euwest.graphcms.com/v1/cjqao1br0hmqo01bnfy764u6h/master"
+  uri: "https://api-euwest.graphcms.com/v1/cjqao1br0hmqo01bnfy764u6h/master",
+  clientState: {
+    defaults: defaultState,
+    resolvers: {}
+  }
 });
 
 class App extends Component {
