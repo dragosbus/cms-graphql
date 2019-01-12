@@ -21,7 +21,9 @@ export default class NewPost extends Component {
         <Mutation mutation={NEW_POST}>
           {
             createPost => (
-              <PostForm onSubmit = {createPost}/>
+              <PostForm onSubmit = {createPost} onSuccess={() => {
+                this.props.history.push('/')
+              }}/>
             )
           }
         </Mutation>
